@@ -1,0 +1,126 @@
+import properties.PropertyManager;
+
+import java.util.Locale;
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+
+public class Calendary extends Application{
+	
+    private Stage stage;
+    private DatePicker checkInDatePicker;
+ 
+    @Override
+    public void start(Stage stage) {
+        this.stage = stage;
+        stage.setTitle("DatePickerSample ");
+        initUI();
+        stage.show();
+    }
+ 
+    private void initUI() {
+        VBox vbox = new VBox(20);
+        vbox.setStyle("-fx-padding: 10;");
+        Scene scene = new Scene(vbox, 400, 400);
+        stage.setScene(scene);
+
+        checkInDatePicker = new DatePicker();
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+
+        Label checkInlabel = new Label("Check-In Date:");
+        gridPane.add(checkInlabel, 0, 0);
+
+        GridPane.setHalignment(checkInlabel, HPos.LEFT);
+        gridPane.add(checkInDatePicker, 0, 1);
+        vbox.getChildren().add(gridPane);
+    }
+	
+	
+	public static void main (String[] args) {
+		
+		// Paper Color
+		
+		if (PropertyManager.getProperty("BlackWhite")) {
+			System.out.println("BlackWhite selected");
+		}
+		if (PropertyManager.getProperty("WhiteBlack")) {
+			System.out.println("WhiteBlack selected");
+		}
+		if (PropertyManager.getProperty("RedWhite")) {
+			System.out.println("RedWhite selected");
+		}
+		if (PropertyManager.getProperty("WhiteRed")) {
+			System.out.println("WhiteRed selected");
+		}
+		if (PropertyManager.getProperty("BlueWhite")) {
+			System.out.println("BlueWhite selected");
+		}
+		if (PropertyManager.getProperty("WhiteBlue")) {
+			System.out.println("WhiteBlue selected");
+		}
+		
+		// Language
+		
+		if (PropertyManager.getProperty("English")) {
+			System.out.println("English selected");
+		}
+		if (PropertyManager.getProperty("German")) {
+			System.out.println("German selected");
+		}
+		
+		// CalendaryExtent
+		
+		if (PropertyManager.getProperty("Months")) {
+			System.out.println("Months selected");
+		}
+		if (PropertyManager.getProperty("Days")) {
+			System.out.println("Days selected");
+		}
+		if (PropertyManager.getProperty("Weeks")) {
+			System.out.println("Weeks selected");
+		}
+		if (PropertyManager.getProperty("Years")) {
+			System.out.println("Years selected");
+		}
+		
+		// ReminderFunction
+		
+		if (PropertyManager.getProperty("Audio")) {
+			System.out.println("Audio selected");
+		}
+		if (PropertyManager.getProperty("PopUpWindow")) {
+			System.out.println("PopUpWindow selected");
+		}
+		
+		// SearchFunction
+		
+		if (PropertyManager.getProperty("SearchDate")) {
+			System.out.println("SearchDate selected");
+		}
+		if (PropertyManager.getProperty("SearchCalendaryEntries")) {
+			System.out.println("SearchCalendaryEntries selected");
+		}
+		
+		// AuthorizedLogin
+		
+		if (PropertyManager.getProperty("AuthorizedLoginNecessary")) {
+			System.out.println("AuthorizedLoginNecessary selected");
+		}
+		if (PropertyManager.getProperty("NoAuthorizedLogin")) {
+			System.out.println("NoAuthorizedLogin selected");
+		}
+		
+		Locale.setDefault(Locale.GERMANY);
+        launch(args);
+		
+	}
+}
