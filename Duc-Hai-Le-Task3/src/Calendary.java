@@ -8,17 +8,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Calendary extends Application{
@@ -44,58 +36,58 @@ public class Calendary extends Application{
 	    		Years = new Button();
 
 
-	    //ifdef days
-        Days = new Button("Days");
-        Days.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	GridPane daysView = addDaysView();
-            	root.setRight(daysView);
-            	String[] currentInformation = getCurrentInformation();         	
-            	Label text = new Label(currentInformation[1] + "\n" + currentInformation[0]);
-            	//text.setContentDisplay(ContentDisplay.RIGHT);
-            	text.setFont(new Font("Railway", 32));
-            	root.setLeft(text);
-            	root.setCenter(null);
-            }
-        });
-        //endif
+	    //#ifdef Days
+//@        Days = new Button("Days");
+//@        Days.setOnAction(new EventHandler<ActionEvent>() {
+//@            @Override
+//@            public void handle(ActionEvent event) {
+//@            	GridPane daysView = addDaysView();
+//@            	root.setRight(daysView);
+//@            	String[] currentInformation = getCurrentInformation();         	
+//@            	Label text = new Label(currentInformation[1] + "\n" + currentInformation[0]);
+//@            	//text.setContentDisplay(ContentDisplay.RIGHT);
+//@            	text.setFont(new Font("Railway", 32));
+//@            	root.setLeft(text);
+//@            	root.setCenter(null);
+//@            }
+//@        });
+        //#endif
         
-        //ifdef months
-        Months = new Button("Months");
-        Months.setOnAction(new EventHandler<ActionEvent>() { 
-            @Override
-            public void handle(ActionEvent event) {
-            	root.setCenter(addMonthsView());
-            	root.setLeft(null);
-            	root.setRight(null);
-            }
-        });
-        //endif
+        //#ifdef Months
+//@        Months = new Button("Months");
+//@        Months.setOnAction(new EventHandler<ActionEvent>() { 
+//@            @Override
+//@            public void handle(ActionEvent event) {
+//@            	root.setCenter(addMonthsView());
+//@            	root.setLeft(null);
+//@            	root.setRight(null);
+//@            }
+//@        });
+        //#endif
     
-        //ifdef weeks
-        Weeks = new Button("Weeks");
-        Weeks.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	root.setCenter(addWeeksView());
-            	root.setLeft(null);
-            	root.setRight(null);
-            }
-        });
-        //endif
+        //#ifdef Weeks
+//@        Weeks = new Button("Weeks");
+//@        Weeks.setOnAction(new EventHandler<ActionEvent>() {
+//@            @Override
+//@            public void handle(ActionEvent event) {
+//@            	root.setCenter(addWeeksView());
+//@            	root.setLeft(null);
+//@            	root.setRight(null);
+//@            }
+//@        });
+        //#endif
     
-        //ifdef years
-        Years = new Button("Years");
-        Years.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	root.setCenter(addYearsView());
-            	root.setLeft(null);
-            	root.setRight(null);
-            }
-        });
-        //endif
+        //#ifdef Years
+//@        Years = new Button("Years");
+//@        Years.setOnAction(new EventHandler<ActionEvent>() {
+//@            @Override
+//@            public void handle(ActionEvent event) {
+//@            	root.setCenter(addYearsView());
+//@            	root.setLeft(null);
+//@            	root.setRight(null);
+//@            }
+//@        });
+        //#endif
 	        
 	        
 	        
@@ -147,90 +139,90 @@ public class Calendary extends Application{
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss").format(new java.util.Date());
 		
-		//ifdef German
-		String deDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "de") + " " + timeStamp.substring(0, 4);
-		currentInformation[0] = deDate;
-		//elifdef English
-		String enDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "en") + " " + timeStamp.substring(0, 4);;
-		currentInformation[0] = enDate;
-		//endif
+		//#ifdef German
+//@		String deDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "de") + " " + timeStamp.substring(0, 4);
+//@		currentInformation[0] = deDate;
+//@		//#el ifdef English
+//@		String enDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "en") + " " + timeStamp.substring(0, 4);;
+//@		currentInformation[0] = enDate;
+		//#endif
 		String time = timeStamp.substring(11);
 		currentInformation[1] = time;	
 		
 		return currentInformation;
 	}
 	
-	//ifdef months
-	public GridPane addMonthsView() {
-		GridPane gridPane = new GridPane();
-		
-		String[] weekdays = {"Mo", "Tu", "We", "Thur", "Fri", "Sa", "Sun"};
-		for (int i = 0; i < 7; i++) {
-			gridPane.add(new Text(weekdays[i]), i, 0);
-		}
-		
-		for (int i = 1, k = 1; i <= 31; i++) {
-			if (i%7 == 0) {
-				gridPane.add(new TextArea(i + ""), i%7, ++k);
-			} else {
-				gridPane.add(new TextArea(i + ""), i%7, k);
-			}
-		}
-		return gridPane;
-	}
-	//endif
+	//#ifdef Months
+//@	public GridPane addMonthsView() {
+//@		GridPane gridPane = new GridPane();
+//@		
+//@		String[] weekdays = {"Mo", "Tu", "We", "Thur", "Fri", "Sa", "Sun"};
+//@		for (int i = 0; i < 7; i++) {
+//@			gridPane.add(new Text(weekdays[i]), i, 0);
+//@		}
+//@		
+//@		for (int i = 1, k = 1; i <= 31; i++) {
+//@			if (i%7 == 0) {
+//@				gridPane.add(new TextArea(i + ""), i%7, ++k);
+//@			} else {
+//@				gridPane.add(new TextArea(i + ""), i%7, k);
+//@			}
+//@		}
+//@		return gridPane;
+//@	}
+	//#endif
 	
-	//ifdef WEEKS
-	public GridPane addWeeksView() {
-		
-		GridPane gridPane = new GridPane();
-		
-		for (int i = 0; i < 7; i++) {
-			//ifdef en
-			gridPane.add(new Text(getWeek(i, "en")), i, 0);
-			//elifdef de
-			gridPane.add(new Text(getWeek(i, "de")), i, 0);
-			//endif
-		}
-		
-		for (int i = 0, k = -1; i < (7*24); i++) {
-			if (i%24 == 0) {
-				gridPane.add(new TextArea("" + (i%24) + ":00"),  ++k, i%24+1);
-			} else {
-				gridPane.add(new TextArea("" + (i%24) + ":00"), k, i%24+1);
-			}
-		}
-		return gridPane;
-	}
-	//endif
+	//#ifdef Weeks
+//@	public GridPane addWeeksView() {
+//@		
+//@		GridPane gridPane = new GridPane();
+//@		
+//@		for (int i = 0; i < 7; i++) {
+			//#ifdef English
+//@			gridPane.add(new Text(getWeek(i, "en")), i, 0);
+//@			//#el ifdef German
+//@			gridPane.add(new Text(getWeek(i, "de")), i, 0);
+			//#endif
+//@		}
+//@		
+//@		for (int i = 0, k = -1; i < (7*24); i++) {
+//@			if (i%24 == 0) {
+//@				gridPane.add(new TextArea("" + (i%24) + ":00"),  ++k, i%24+1);
+//@			} else {
+//@				gridPane.add(new TextArea("" + (i%24) + ":00"), k, i%24+1);
+//@			}
+//@		}
+//@		return gridPane;
+//@	}
+	//#endif
 	
-	//ifdef DAYS
-	public GridPane addDaysView() {
-		
-		GridPane gridPane = new GridPane();
-		
-		for (int i = 0; i < 24; i++) {
-			gridPane.add(new TextArea("" + (i%24) + ":00"),  0, i);
-		}
-		
-		return gridPane;
-	}
-	//endif
+	//#ifdef Days
+//@	public GridPane addDaysView() {
+//@		
+//@		GridPane gridPane = new GridPane();
+//@		
+//@		for (int i = 0; i < 24; i++) {
+//@			gridPane.add(new TextArea("" + (i%24) + ":00"),  0, i);
+//@		}
+//@		
+//@		return gridPane;
+//@	}
+	//#endif
 	
-	//ifdef YEARS
-	public GridPane addYearsView() {
-		GridPane gridPane = new GridPane();
-		
-		for (int i = 0, k = 1; i < 12; i++) {
-			if (i%4 == 0) {
-				gridPane.add(new TextArea(getMonth(i, "en")), i%4, ++k);
-			} else {
-				gridPane.add(new TextArea(getMonth(i, "en")), i%4, k);
-			}
-		}
-		return gridPane;
-	}
-	//endif
+	//#ifdef Years
+//@	public GridPane addYearsView() {
+//@		GridPane gridPane = new GridPane();
+//@		
+//@		for (int i = 0, k = 1; i < 12; i++) {
+//@			if (i%4 == 0) {
+//@				gridPane.add(new TextArea(getMonth(i, "en")), i%4, ++k);
+//@			} else {
+//@				gridPane.add(new TextArea(getMonth(i, "en")), i%4, k);
+//@			}
+//@		}
+//@		return gridPane;
+//@	}
+	//#endif
 	
 	
 	public String getMonth(int number, String language) {

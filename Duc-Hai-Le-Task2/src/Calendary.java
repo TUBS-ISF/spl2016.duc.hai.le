@@ -22,6 +22,11 @@ import javafx.stage.Stage;
 public class Calendary extends Application{
 	
 	public static BorderPane root;
+	public static String currentDay;
+	public static String currentMonth;
+	public static String currentWeek;
+	public static String currentYear;
+	public static String currentDate;
 	
 	public HBox addHBox() {
 		HBox hbox = new HBox();
@@ -41,7 +46,7 @@ public class Calendary extends Application{
 	        Days.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	                // new Event
+	                root.setCenter(addDaysView());
 	            }
 	        });
 	    }
@@ -113,10 +118,15 @@ public class Calendary extends Application{
         //root.setAlignment(hbox, Pos.TOP_CENTER);
         root.setTop(hbox);
         
+        
+        
         primaryStage.setScene(new Scene(root, 1200, 600));
         primaryStage.show();
     }
 	
+	void setCurrentInformation() {
+		
+	}
 	
 	public GridPane addMonthsView() {
 		GridPane gridPane = new GridPane();
@@ -137,6 +147,25 @@ public class Calendary extends Application{
 	}
 	
 	public GridPane addWeeksView() {
+		
+		GridPane gridPane = new GridPane();
+		
+		String[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+		for (int i = 0; i < 7; i++) {
+			gridPane.add(new Text(weekdays[i]), i, 0);
+		}
+		
+		for (int i = 0, k = -1; i < (7*24); i++) {
+			if (i%24 == 0) {
+				gridPane.add(new TextArea("" + (i%24) + ":00"),  ++k, i%24+1);
+			} else {
+				gridPane.add(new TextArea("" + (i%24) + ":00"), k, i%24+1);
+			}
+		}
+		return gridPane;
+	}
+	
+public GridPane addDaysView() {
 		
 		GridPane gridPane = new GridPane();
 		
