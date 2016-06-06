@@ -1,10 +1,10 @@
 package PaperColorPlugin;
 
-import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public interface PaperColorPlugin {
 
-	public Scene setPaperColor(Scene scene);
+	public GridPane setPaperColor(GridPane gridPane);
 	public Color getPenColor();
 }

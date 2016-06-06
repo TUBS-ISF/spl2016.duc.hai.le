@@ -1,15 +1,16 @@
 package PaperColorPlugin;
 
-import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class BlackWhite {
 	
-	public void setPaperColor(Scene scene) {
-		scene.getStylesheets().add("black");
+	public GridPane setPaperColor(GridPane gridPane) {
+		gridPane.setStyle("-fx-background-color: black;");
+		return gridPane;
 	}
 	
-	public Color getPenColor() {
-		return Color.WHITE;
+	public String getPenColor() {
+		return "white";
 	}
 }

@@ -15,14 +15,18 @@ public class Years implements CalendaryExtentPlugin {
 		return months[number];
 	}
 	
-	public GridPane getPane() {
+	public GridPane getPane(String color) {
 		GridPane gridPane = new GridPane();
 		
 		for (int i = 0, k = 1; i < 12; i++) {
+			
+			TextArea textArea = new TextArea(getMonth(i));
+			textArea.setStyle("-fx-text-fill: " + color +";");
+			
 			if (i%4 == 0) {
-				gridPane.add(new TextArea(getMonth(i)), i%4, ++k);
+				gridPane.add(textArea, i%4, ++k);
 			} else {
-				gridPane.add(new TextArea(getMonth(i)), i%4, k);
+				gridPane.add(textArea, i%4, k);
 			}
 		}
 		return gridPane;

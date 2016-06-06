@@ -14,18 +14,24 @@ public class Weeks implements CalendaryExtentPlugin {
 		return weeks[number];
 	}
 	
-	public GridPane getPane() {
+	public GridPane getPane(String color) {
 		GridPane gridPane = new GridPane();
 		
 		for (int i = 0; i < 7; i++) {
-			gridPane.add(new Text(getWeek(i)), i, 0);
+			Text text = new Text(getWeek(i));
+			text.setStyle("-fx-text-fill: " + color +";");
+			gridPane.add(text, i, 0);
 		}
 		
 		for (int i = 0, k = -1; i < (7*24); i++) {
+			
+			TextArea textArea = new TextArea("" + (i%24) + ":00");
+			textArea.setStyle("-fx-text-fill: " + color +";");
+			
 			if (i%24 == 0) {
-				gridPane.add(new TextArea("" + (i%24) + ":00"),  ++k, i%24+1);
+				gridPane.add(textArea,  ++k, i%24+1);
 			} else {
-				gridPane.add(new TextArea("" + (i%24) + ":00"), k, i%24+1);
+				gridPane.add(textArea, k, i%24+1);
 			}
 		}
 		return gridPane;

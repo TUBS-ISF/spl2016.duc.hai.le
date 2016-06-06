@@ -3,9 +3,10 @@ package CalendaryExtentPlugin;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
 public interface CalendaryExtentPlugin {
 	
-	public GridPane getPane();
+	public GridPane getPane(String color);
 	public Button getButton();
 }

@@ -48,7 +48,9 @@ public class Calendary extends Application{
 			newButton.setOnAction(new EventHandler<ActionEvent>() { 
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	root.setCenter(plugin.getPane());
+	            	GridPane gridPane = plugin.getPane(paperColor.getPenColor());
+	            	paperColor.setPaperColor(gridPane);
+	            	root.setCenter(gridPane);
 	            	root.setLeft(null);
 	            	root.setRight(null);
 	            }
@@ -101,12 +103,14 @@ public class Calendary extends Application{
 	public void start(Stage primaryStage) {
         
     	primaryStage.setTitle("Calendary v0.1");
-          
+         
+    	
+    	
         root = new BorderPane();
         HBox hbox = addHBox();
         root.setTop(hbox);  
         
-        primaryStage.setScene(paperColor.setPaperColor(new Scene(root, 1200, 600)));
+        primaryStage.setScene(new Scene(root, 1200, 600));
         primaryStage.show();
     }
 	

@@ -7,12 +7,15 @@ import javafx.scene.text.Text;
 
 public class Months implements CalendaryExtentPlugin {
 	
-	public GridPane getPane() {
+	public GridPane getPane(String color) {
 		GridPane gridPane = new GridPane();
 		
 		String[] weekdays = {"Mo", "Tu", "We", "Thur", "Fri", "Sa", "Sun"};
+		
 		for (int i = 0; i < 7; i++) {
-			gridPane.add(new Text(weekdays[i]), i, 0);
+			TextArea text = new TextArea(weekdays[i]);
+			text.setStyle("-fx-text-fill: " + color +";");
+			gridPane.add(text, i, 0);
 		}
 		
 		for (int i = 1, k = 1; i <= 31; i++) {

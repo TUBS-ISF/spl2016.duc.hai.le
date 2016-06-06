@@ -1,16 +1,16 @@
 package PaperColorPlugin;
 
-import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class WhiteBlue {
 
-	public Scene setPaperColor(Scene scene) {
-		scene.getStylesheets().add("white");
-		return scene;
+	public GridPane setPaperColor(GridPane gridPane) {
+		gridPane.setStyle("-fx-background-color: white;");
+		return gridPane;
 	}
 	
-	public Color getPenColor() {
-		return Color.BLUE;
+	public String getPenColor() {
+		return "blue";
 	}
 }
