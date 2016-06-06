@@ -1,0 +1,27 @@
+.blackWhite {
+    -fx-background-color: #8fbc8f;
+}
+.whiteBlack {
+    -fx-background-color: #8fbc8f;
+}
+.blueWhite {
+    -fx-background-color: #8fbc8f;
+}
+.whiteBlue {
+    -fx-background-color: #8fbc8f;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}

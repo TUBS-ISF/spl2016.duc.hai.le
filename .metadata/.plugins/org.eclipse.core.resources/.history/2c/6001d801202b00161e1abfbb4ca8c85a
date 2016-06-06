@@ -1,0 +1,5 @@
+public interface CalendaryExtentPlugin {
+	private void getPane();
+	private void getButton();
+	private void buttonClicked();
+}

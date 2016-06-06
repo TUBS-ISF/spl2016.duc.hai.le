@@ -1,0 +1,12 @@
+import com.sun.prism.paint.Color;
+
+public class WhiteBlack implements PaperColorPlugin {
+	
+	public Color getPaperColor() {
+		return Color.WHITE;
+	}
+	
+	public Color getPenColor() {
+		return Color.BLACK;
+	}
+}

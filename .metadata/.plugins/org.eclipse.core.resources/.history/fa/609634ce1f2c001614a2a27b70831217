@@ -1,0 +1,12 @@
+package CalendaryExtentPlugin;
+
+import javafx.scene.control.Button;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.GridPane;
+
+public interface CalendaryExtentPlugin {
+
+	public GridPane getPane();
+	public Button getButton();
+	public Border setPane(BorderPane root);
+}

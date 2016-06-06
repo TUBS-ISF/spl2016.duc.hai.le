@@ -1,0 +1,12 @@
+.blackWhite {
+    -fx-background-color: black;
+}
+.whiteBlack {
+    -fx-background-color: white;
+}
+.blueWhite {
+    -fx-background-color: blue;
+}
+.whiteBlue {
+    -fx-background-color: white;
+}

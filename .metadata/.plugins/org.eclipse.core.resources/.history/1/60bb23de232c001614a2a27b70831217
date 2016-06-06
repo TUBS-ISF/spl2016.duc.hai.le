@@ -1,0 +1,8 @@
+package PaperColorPlugin;
+
+import javafx.scene.Scene;
+
+public interface PaperColorPlugin {
+
+	public void setColor(Scene scene);
+}

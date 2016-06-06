@@ -1,0 +1,135 @@
+import java.text.SimpleDateFormat;
+import java.util.Objects;
+
+import CalendaryExtentPlugin.CalendaryExtentPlugin;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class Calendary extends Application{
+	
+	public static BorderPane root;
+	public static String currentDay;
+	public static String currentMonth;
+	public static String currentWeek;
+	public static String currentYear;
+	public static String currentDate;
+	public static CalendaryExtentPlugin[] calendaryExtentPlugin;
+	
+	public HBox addHBox() {
+		HBox hbox = new HBox();
+	    HBox hboxMiddle = new HBox();
+	    HBox hboxRight = new HBox();
+	    HBox hboxLeft = new HBox();
+	    hbox.setPadding(new Insets(15, 12, 15, 12));
+	    hbox.setSpacing(300);
+	    hbox.setAlignment(Pos.CENTER);
+	    
+	    for (CalendaryExtentPlugin plugin: calendaryExtentPlugin) {
+	    	
+	    	// set button, insert it in window, listener for click
+	    	Button newButton = plugin.getButton();
+	    	hboxMiddle.getChildren().addAll(newButton);
+	    	
+			newButton.setOnAction(new EventHandler<ActionEvent>() { 
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	root.setCenter(plugin.getPane());
+	            	root.setLeft(null);
+	            	root.setRight(null);
+	            }
+	        });
+	    }
+
+	    // standard button for calendary entry insertion
+	    Button NewEvent = new Button("+");
+        NewEvent.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+	    
+	    /**
+        Days = new Button("Days");
+        Days.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	GridPane daysView = addDaysView();
+            	root.setRight(daysView);
+            	String[] currentInformation = getCurrentInformation();         	
+            	Label text = new Label(currentInformation[1] + "\n" + currentInformation[0]);
+            	text.setFont(new Font("Railway", 32));
+            	root.setLeft(text);
+            	root.setCenter(null);
+            }
+        });
+        **/
+	        
+        
+        TextField textField = new TextField();
+        hboxRight.getChildren().addAll(textField);
+	    hboxRight.setSpacing(5);
+        hboxRight.setAlignment(Pos.CENTER_RIGHT);
+        
+
+	    hboxMiddle.setSpacing(5);
+	    hboxMiddle.setAlignment(Pos.CENTER);
+	    
+	    hboxLeft.getChildren().addAll(NewEvent);
+        hboxLeft.setSpacing(5);
+        hboxLeft.setAlignment(Pos.CENTER_LEFT);
+        
+        hbox.getChildren().addAll(hboxLeft, hboxMiddle, hboxRight);
+
+	    return hbox;
+	}
+	
+	
+	public void start(Stage primaryStage) {
+        
+    	primaryStage.setTitle("Calendary v0.1");
+          
+        root = new BorderPane();
+        HBox hbox = addHBox();
+        root.setTop(hbox);  
+        
+        primaryStage.setScene(new Scene(root, 1200, 600));
+        primaryStage.show();
+    }
+	
+	
+	
+	public String[] getCurrentInformation() {
+		
+		String[] currentInformation = new String[2];
+		
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss").format(new java.util.Date());
+		
+		String deDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "de") + " " + timeStamp.substring(0, 4);
+		currentInformation[0] = deDate;
+		String enDate = timeStamp.substring(8, 10) + ". " + getMonth( Integer.parseInt(timeStamp.substring(5, 7))-1, "en") + " " + timeStamp.substring(0, 4);;
+		currentInformation[0] = enDate;
+		String time = timeStamp.substring(11);
+		currentInformation[1] = time;	
+		
+		return currentInformation;
+	}
+	
+	public static void main (String[] args) {
+        launch(args);
+		
+	}
+}

@@ -1,0 +1,14 @@
+package PaperColorPlugin;
+
+import javafx.scene.paint.Color;
+
+public class WhiteBlue {
+
+	public Color getPaperColor() {
+		return Color.WHITE;
+	}
+	
+	public Color getPenColor() {
+		return Color.BLUE;
+	}
+}
