@@ -1,4 +1,0 @@
-public interface CalendaryExtentPlugin {
-	private void setPane();
-	private void setButton();
-}

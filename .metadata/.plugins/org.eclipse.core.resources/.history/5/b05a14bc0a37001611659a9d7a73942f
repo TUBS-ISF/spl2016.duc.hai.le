@@ -1,0 +1,25 @@
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+
+/**
+ * TODO description
+ */
+public class CalendaryProgram {
+	
+	public HBox addHBox() {
+		HBox hbox = original();
+
+        Button Days = new Button("Days");
+        Days.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                root.setCenter(addDaysView());
+            }
+        });
+		
+		return hbox;
+	}
+	
+}

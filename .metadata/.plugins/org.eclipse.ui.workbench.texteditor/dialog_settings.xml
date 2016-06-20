@@ -2,16 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="isRegEx"/>
-		<item value="getWeek" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="//"/>
+			<item value="//@"/>
 			<item value="getWeek"/>
 			<item value="//#ifdef*"/>
 			<item value="//#endif"/>
-			<item value="//@"/>
 			<item value="//elifdef"/>
 			<item value="//endif"/>
 			<item value="//ifdef"/>

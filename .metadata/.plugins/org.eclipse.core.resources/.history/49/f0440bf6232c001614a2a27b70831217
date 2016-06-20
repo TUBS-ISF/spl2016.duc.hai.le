@@ -1,8 +1,0 @@
-package PaperColorPlugin;
-
-import javafx.scene.Scene;
-
-public interface PaperColorPlugin {
-
-	public Color setColor(Scene scene); // set paper color and returns color for font
-}

@@ -1,7 +1,0 @@
-package CalendaryExtentPlugin;
-
-public class CalendaryExtentPlugin {
-
-	public GridPane getPane();
-	public Button getButton();
-}

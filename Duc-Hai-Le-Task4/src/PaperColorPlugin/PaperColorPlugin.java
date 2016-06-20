@@ -6,5 +6,5 @@ import javafx.scene.paint.Color;
 public interface PaperColorPlugin {
 
 	public GridPane setPaperColor(GridPane gridPane);
-	public Color getPenColor();
+	public String getPenColor();
 }
