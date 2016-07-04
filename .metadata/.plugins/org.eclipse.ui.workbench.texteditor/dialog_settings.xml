@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="//"/>
+			<item value="def *"/>
+			<item value="#if"/>
+			<item value="#endif"/>
+			<item value="#*"/>
+			<item value="//*"/>
 			<item value="//@"/>
+			<item value="//"/>
 			<item value="getWeek"/>
-			<item value="//#ifdef*"/>
-			<item value="//#endif"/>
-			<item value="//elifdef"/>
-			<item value="//endif"/>
-			<item value="//ifdef"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

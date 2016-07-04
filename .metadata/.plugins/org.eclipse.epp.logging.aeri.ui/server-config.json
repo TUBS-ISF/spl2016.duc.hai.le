@@ -1,9 +1,9 @@
 {
   "version": "v1",
   "title": "Eclipse Automated Error Reporting",
-  "timestamp": 1466082013640,
+  "timestamp": 1467657340696,
   "ttl": 10080,
-  "helpUrl": "https://wiki.eclipse.org/EPP/Logging",
+  "helpUrl": "https://dev.eclipse.org/recommenders/community/aeri/v2/help/",
   "feedbackUrl": "http://ctrlflow.com/automated-error-reporting",
   "aboutUrl": "https://wiki.eclipse.org/EPP/Logging",
   "submitUrl": "https://dev.eclipse.org/recommenders/community/confess/0.6/reports/",
@@ -22,7 +22,6 @@
   "acceptedPackages": [
     "ch.qos.*",
     "com.cforcoding.*",
-    "com.codetrails.*",
     "com.ctrlflow.*",
     "com.google.*",
     "com.gradleware.tooling.*",
@@ -41,6 +40,7 @@
   "acceptOtherPackages": true,
   "acceptUiFreezes": true,
   "ignoredStatuses": [
+    ":java.io.IOException:There is not enough space on the disk",
     ":java.net.*:",
     "org.eclipse.core.filesystem::Could not delete*",
     "org.eclipse.core.filesystem::Could not move*",
@@ -52,5 +52,5 @@
     "org.eclipse.pde.core::The current target platform contains errors*",
     "org.eclipse.ui::Conflicting handlers for*"
   ],
-  "problemsZipLastDownloadTimestamp": 1466431268909
+  "problemsZipLastDownloadTimestamp": 1467657353532
 }
